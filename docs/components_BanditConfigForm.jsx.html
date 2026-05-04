@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/BanditConfigForm.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/BanditConfigForm.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card.jsx";
+import { Button } from "@/components/ui/button.jsx";
+import Counter from "@/components/shared/Counter.jsx";
+import { Spinner } from "@/components/ui/spinner.jsx";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger
+} from "@/components/ui/tooltip";
+
+/**
+ * BanditConfig Component
+ *
+ * A configuration panel for multi-armed bandit simulations.
+ * Allows the user to select the bandit type, the number of arms,
+ * the number of iterations, and to start or reset the simulation.
+ *
+ * @component
+ * @param {Object} props - The properties passed to the component.
+ * @param {Array} props.arms - Array describing the individual arms.
+ * @param {function} props.setArmCount - Callback to update the number of arms.
+ * @param {number} props.iterations - The number of simulation iterations.
+ * @param {function} props.setIterations - Callback to update the iteration count.
+ * @param {function} props.startSimulation - Callback to start the simulation.
+ * @param {function} props.resetAll - Callback to reset all settings to default.
+ * @param {boolean} props.running - Whether the simulation is currently running.
+ * @returns {JSX.Element} The rendered configuration panel.
+ */
+export default function BanditConfig({
+                                         arms, setArmCount,
+                                         iterations, setIterations,
+                                         startSimulation, resetAll, running, showPlot, setShowPlot, lang,
+                                     }) {
+    return (
+        &lt;Card className="w-1/3 flex flex-col bg-muted/30 gap-4 p-4">
+            &lt;CardHeader>
+                &lt;CardTitle className="text-2xl">
+                    {lang === "de"
+                        ? "Konfiguration"
+                        : "Configuration"}
+                &lt;/CardTitle>
+                &lt;CardDescription>
+                    {lang === "de"
+                        ? "Wähle die Anzahl der Kampagnen und Versuche"
+                        : "Select a number of campaigns and attempts"}
+                &lt;/CardDescription>
+            &lt;/CardHeader>
+
+            &lt;TooltipProvider delayDuration={100}>
+                {/* Number of campaigns with tooltip */}
+                &lt;Tooltip>
+                    &lt;TooltipTrigger asChild>
+                        &lt;Button  variant="link"
+                                 className="text-foreground hover:text-foreground/80 font-bold">
+                            {lang === "de"
+                                ? "Anzahl Kampagnen"
+                                : "Number of campaigns"}
+                        &lt;/Button>
+                    &lt;/TooltipTrigger>
+                    &lt;TooltipContent>
+                        &lt;p>
+                            {lang === "de"
+                                ? "Gesamtzahl der verfügbaren Arme/Kampagnen im Bandit-Spiel."
+                                : "Total number of arms/campaigns available in the current bandit game."}
+                        &lt;/p>
+                    &lt;/TooltipContent>
+                &lt;/Tooltip>
+                &lt;Counter
+                    value={arms.length}
+                    onChange={setArmCount}
+                    min={2}
+                    max={50}
+                    disabled={running}
+                    className="mb-3"
+                />
+
+                {/* Number of attempts with tooltip */}
+                &lt;Tooltip >
+                    &lt;TooltipTrigger asChild>
+                        &lt;Button
+                            variant="link"
+                            className="text-foreground hover:text-foreground/80 font-bold"
+                        >
+                            {lang === "de" ? "Anzahl Versuche" : "Number of attempts"}
+                        &lt;/Button>
+
+                    &lt;/TooltipTrigger>
+                    &lt;TooltipContent>
+                        &lt;p>
+                            {lang === "de"
+                                ? "Gesamtzahl der Versuche in dieser Simulation."
+                                : "Total number of trials the simulation will perform."}
+                        &lt;/p>
+                    &lt;/TooltipContent>
+                &lt;/Tooltip>
+                &lt;Counter
+                    value={iterations}
+                    onChange={setIterations}
+                    min={1}
+                    max={100}
+                    disabled={running}
+                />
+            &lt;/TooltipProvider>
+
+            &lt;div className="flex gap-2 mt-2">
+                {running ? (
+                    &lt;Button variant="secondary" disabled className="flex items-center gap-2">
+                        &lt;Spinner className="size-4" /> {lang === "de" ? "Läuft" : "Running"}
+                    &lt;/Button>
+                ) : (
+                    &lt;Button onClick={startSimulation}>{lang === "de" ? "Start" : "Start"}&lt;/Button>
+                )}
+                {!showPlot &amp;&amp; running &amp;&amp; (
+                    &lt;Button variant="secondary" onClick={() => setShowPlot(true)}>
+                        {lang === "de" ? "Diagramm" : "Diagram"}
+                    &lt;/Button>
+                )}
+                &lt;Button variant="secondary" onClick={resetAll}>
+                    {lang === "de" ? "Zurücksetzen" : "Reset"}
+                &lt;/Button>
+            &lt;/div>
+        &lt;/Card>
+    );
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ALPHA_DEFAULT">ALPHA_DEFAULT</a></li><li><a href="global.html#AlgorithmTyp">AlgorithmTyp</a></li><li><a href="global.html#DistributionTyp">DistributionTyp</a></li><li><a href="global.html#GAUSSIAN_MEAN_SPREAD_STD_DEV">GAUSSIAN_MEAN_SPREAD_STD_DEV</a></li><li><a href="global.html#GAUSSIAN_STD_DEV">GAUSSIAN_STD_DEV</a></li><li><a href="global.html#MEAN_OF_MEANS">MEAN_OF_MEANS</a></li><li><a href="global.html#UCB_C">UCB_C</a></li><li><a href="global.html#addReward">addReward</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createTable">createTable</a></li><li><a href="global.html#getActionProbabilities">getActionProbabilities</a></li><li><a href="global.html#getPreferences">getPreferences</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#selectArm">selectArm</a></li><li><a href="global.html#setChosenAlgorithms">setChosenAlgorithms</a></li><li><a href="global.html#setChosenDistribution">setChosenDistribution</a></li><li><a href="global.html#setNextArm">setNextArm</a></li><li><a href="global.html#setNumberOfArms">setNumberOfArms</a></li><li><a href="global.html#setNumberOfTries">setNumberOfTries</a></li><li><a href="global.html#supportedTypes">supportedTypes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#useBanditGame">useBanditGame</a></li><li><a href="global.html#withDefaults">withDefaults</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Oct 14 2025 12:51:36 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

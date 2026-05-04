@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/BanditResults.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/BanditResults.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use client";
+
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
+import { Collapsible } from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger
+} from "@/components/ui/tooltip";
+
+/**
+ * Renders a results dashboard for a multi-armed bandit simulation.
+ *
+ * Displays total attempts, total reward, and a collapsible log of recent activities.
+ * Supports both Bernoulli and Gaussian bandit reward types.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {number} props.totalPulls - Total number of attempts (pulls) made by the bandit.
+ * @param {number} props.totalReward - The cumulative reward across all attempts.
+ * @param {string[]} props.logs - Array of log strings, each formatted as `"Timestep: X, Arm: Y, Reward: Z"`.
+ * @param {"Bernoulli" | "Gaussian"} props.type - The type of reward distribution used in the simulation.
+ *
+ * @returns {JSX.Element} The rendered BanditResults component.
+ */
+export default function BanditResults({ totalPulls, totalReward, logs, type , lang}) {
+    const [open, setOpen] = useState(false);
+
+    let totalRewardColor =
+        totalReward > 0
+            ? "text-emerald-500"
+            : totalReward &lt; 0
+                ? "text-red-500"
+                : "";
+
+    const renderLogRow = (log) => {
+        const match = log.match(/Timestep: (\d+), Arm: (\d+), Reward: ([\d.-]+)/);
+        if (!match) return null;
+        const [, ts, arm, reward] = match;
+        const rewardValue = parseFloat(reward);
+
+        let rewardDisplay;
+        let rewardColor;
+
+        if (type === "Gaussian") {
+            rewardDisplay = `${rewardValue.toFixed(2)} €`;
+            rewardColor =
+                rewardValue > 0
+                    ? "text-emerald-500"
+                    : rewardValue &lt; 0
+                        ? "text-red-500"
+                        : "text-muted-foreground";
+        } else {
+            rewardDisplay = rewardValue === 1
+                ? (lang === "de" ? "Erfolg" : "Success")
+                : (lang === "de" ? "Fehlschlag" : "Fail");
+            rewardColor =
+                rewardValue === 1
+                    ? "text-emerald-500"
+                    : "text-red-500";
+        }
+
+        return (
+            &lt;TableRow key={ts}>
+                &lt;TableCell className="text-left">
+                    &lt;Badge variant="secondary" className="font-mono">
+                        #{ts}
+                    &lt;/Badge>
+                &lt;/TableCell>
+                &lt;TableCell className="text-left">
+                    {lang === "de" ? "Kampagne #" : "Campaign #"}{arm}&lt;/TableCell>
+                &lt;TableCell
+                    className={`text-right font-mono font-semibold ${rewardColor}`}
+                >
+                    {rewardDisplay}
+                &lt;/TableCell>
+            &lt;/TableRow>
+        );
+    };
+
+
+    return (
+        &lt;Card className="mt-auto w-full bg-muted/30">
+            &lt;CardHeader>&lt;/CardHeader>
+            &lt;CardContent className="flex flex-col gap-6">
+                {/* Top Stats */}
+                &lt;TooltipProvider delayDuration={100}>
+                    &lt;div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        &lt;div>
+                            &lt;Tooltip>
+                                &lt;TooltipTrigger asChild>
+                                    &lt;Button variant="link" className="text-sm hover:text-foreground/80 text-muted-foreground">
+                                        {lang === "de" ? "Gesamtversuche" : "Total Attempts"}
+                                    &lt;/Button>
+                                &lt;/TooltipTrigger>
+                                &lt;TooltipContent>
+                                    &lt;p>{lang === "de"
+                                        ? "Bisherig durchgeführte Anzahl an Versuchen"
+                                        : "Total number of times the bandit has been pulled in this simulation."}&lt;/p>
+                                &lt;/TooltipContent>
+                            &lt;/Tooltip>
+                            &lt;div className="text-3xl font-bold">{totalPulls}&lt;/div>
+                        &lt;/div>
+                        &lt;div>
+                            &lt;Tooltip>
+                                &lt;TooltipTrigger asChild>
+                                    &lt;Button variant="link" className="text-sm hover:text-foreground/80 text-muted-foreground">
+                                        {lang === "de" ? "Gesamtgewinn" : "Total Reward"}
+                                    &lt;/Button>
+                                &lt;/TooltipTrigger>
+                                &lt;TooltipContent>
+                                    &lt;p>
+                                        {lang === "de"
+                                            ? "Bisherig kumulierte Belohnung aller gespielten Kampagnen."
+                                            : "Total number of times the bandit has been pulled in this simulation."}
+                                    &lt;/p>
+                                &lt;/TooltipContent>
+                            &lt;/Tooltip>
+                            &lt;div className={`text-3xl font-bold ${totalRewardColor}`}>
+                                {type === "Gaussian"
+                                    ? totalReward.toFixed(2) + " €"
+                                    : totalReward}
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/TooltipProvider>
+
+                &lt;Separator />
+
+                {/* Logs */}
+                &lt;div className="flex flex-col gap-2">
+                    &lt;div className="flex justify-between items-center">
+                        &lt;span className="text-sm text-muted-foreground font-medium">
+                            {lang === "de" ? "Letzte Aktivität" : "Recent Activity"}
+                        &lt;/span>
+                        &lt;Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setOpen(!open)}
+                            className="flex items-center gap-1"
+                            disabled={logs.length === 0}
+                        >
+                            {open ? (
+                                &lt;>
+                                    {lang === "de" ? "Weniger anzeigen" : "Show less"} &lt;ChevronUp size={16} />
+                                &lt;/>
+                            ) : (
+                                &lt;>
+                                    {lang === "de" ? "Mehr anzeigen" : "Show more"} &lt;ChevronDown size={16} />
+                                &lt;/>
+                            )}
+                        &lt;/Button>
+                    &lt;/div>
+
+                    &lt;Collapsible open={open}>
+                        &lt;div className="overflow-hidden transition-all duration-300">
+                            &lt;Table className="w-full">
+                                &lt;TableHeader>
+                                    &lt;TableRow>
+                                        &lt;TableHead className="w-[80px]">
+                                            {lang === "de" ? "Versuch" : "Attempt"}
+                                        &lt;/TableHead>
+                                        &lt;TableHead>
+                                            {lang === "de" ? "Kampagne" : "Campaign"}
+                                        &lt;/TableHead>
+                                        &lt;TableHead className="text-right">
+                                            {lang === "de" ? "Belohnung" : "Reward"}
+                                        &lt;/TableHead>
+                                    &lt;/TableRow>
+                                &lt;/TableHeader>
+                                &lt;TableBody>
+                                    {logs.length === 0 ? (
+                                        &lt;TableRow>
+                                            &lt;TableCell colSpan={3} className="text-center text-muted-foreground py-3">
+                                                {lang === "de"
+                                                    ? "Noch keine Phishing-Kampagnenaktivität"
+                                                    : "No phishing campaign activity yet"}
+                                            &lt;/TableCell>
+                                        &lt;/TableRow>
+                                    ) : (
+                                        &lt;>
+                                            {renderLogRow(logs[0])}
+
+                                            {open &amp;&amp; logs.slice(1).map((log) => renderLogRow(log))}
+                                        &lt;/>
+                                    )}
+                                &lt;/TableBody>
+                            &lt;/Table>
+                        &lt;/div>
+                    &lt;/Collapsible>
+                &lt;/div>
+            &lt;/CardContent>
+        &lt;/Card>
+    );
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ALPHA_DEFAULT">ALPHA_DEFAULT</a></li><li><a href="global.html#AlgorithmTyp">AlgorithmTyp</a></li><li><a href="global.html#DistributionTyp">DistributionTyp</a></li><li><a href="global.html#GAUSSIAN_MEAN_SPREAD_STD_DEV">GAUSSIAN_MEAN_SPREAD_STD_DEV</a></li><li><a href="global.html#GAUSSIAN_STD_DEV">GAUSSIAN_STD_DEV</a></li><li><a href="global.html#MEAN_OF_MEANS">MEAN_OF_MEANS</a></li><li><a href="global.html#UCB_C">UCB_C</a></li><li><a href="global.html#addReward">addReward</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createTable">createTable</a></li><li><a href="global.html#getActionProbabilities">getActionProbabilities</a></li><li><a href="global.html#getPreferences">getPreferences</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#selectArm">selectArm</a></li><li><a href="global.html#setChosenAlgorithms">setChosenAlgorithms</a></li><li><a href="global.html#setChosenDistribution">setChosenDistribution</a></li><li><a href="global.html#setNextArm">setNextArm</a></li><li><a href="global.html#setNumberOfArms">setNumberOfArms</a></li><li><a href="global.html#setNumberOfTries">setNumberOfTries</a></li><li><a href="global.html#supportedTypes">supportedTypes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#useBanditGame">useBanditGame</a></li><li><a href="global.html#withDefaults">withDefaults</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Oct 14 2025 12:51:36 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

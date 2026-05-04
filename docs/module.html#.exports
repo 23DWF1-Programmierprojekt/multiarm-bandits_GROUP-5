@@ -1,0 +1,6053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: exports</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: exports</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">This class represents a k-armed bandit game configuration and environment.
+It allows to set the number of arms and trials, select a reward distribution
+and chose algorithms to be used for action selection.
+The environment generates reward tables for each arm according to the chosen
+distribution and stores them for later use.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="GradientBanditRewards"><span class="type-signature"></span>GradientBanditRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the gradient bandit strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="UpperConfidenceBoundRewards"><span class="type-signature"></span>UpperConfidenceBoundRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the Upper-Confidence-Bound strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="alpha"><span class="type-signature"></span>alpha<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The learning rate (step-size parameter), denoted as α.
+It controls how significantly the preferences are updated after each trial.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="averageReward"><span class="type-signature"></span>averageReward<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The running average of all rewards received so far, denoted as R̄_t.
+This value serves as the baseline in the update rule to judge an action's
+performance relative to the average.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="bernoulliProbabilities"><span class="type-signature"></span>bernoulliProbabilities<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the random success probabilities assigned to each arm in the Bernoulli case.
+Only defined when chosenDistribution === DistributionTyp.BERNOULLI.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenAlgorithms"><span class="type-signature"></span>chosenAlgorithms<span class="type-signature"> :Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span></h4>
+
+
+
+
+<div class="description">
+    List of algorithms selected for this run (e.g., Greedy, epsilon Greedy, Manual, etc.).
+Each algorithm operates on the same reward table but with different selection policies.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenDistribution"><span class="type-signature"></span>chosenDistribution<span class="type-signature"> :<a href="global.html#DistributionTyp">DistributionTyp</a></span></h4>
+
+
+
+
+<div class="description">
+    Currently selected reward distribution type.
+Determines how rewards for each arm are generated.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#DistributionTyp">DistributionTyp</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsSvc"><span class="type-signature"></span>epsSvc<span class="type-signature"> :<a href="EpsilonProvider.html">EpsilonProvider</a></span></h4>
+
+
+
+
+<div class="description">
+    - Shared epsilon provider.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="EpsilonProvider.html">EpsilonProvider</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html">logic/algorithm/strategies/value-based/EpsGreedy.js</a>, <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsilonGreedyRewards"><span class="type-signature"></span>epsilonGreedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the epsilon greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gaussianMeans"><span class="type-signature"></span>gaussianMeans<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the mean (μ) values assigned to each arm in the Gaussian case.
+Only defined when chosenDistribution === DistributionTyp.GAUSSIAN.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="greedyRewards"><span class="type-signature"></span>greedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="manualRewards"><span class="type-signature"></span>manualRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the manual strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="preferences"><span class="type-signature"></span>preferences<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    An array holding the current preference score for each arm, denoted as H_t(a).
+These scores are not probabilities themselves but are used to compute them
+(e.g., via a softmax function).
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableOfRewards"><span class="type-signature"></span>tableOfRewards<span class="type-signature"> :Array.&lt;Array.&lt;number>></span></h4>
+
+
+
+
+<div class="description">
+    2D array of generated rewards for all arms and trials.
+tableOfRewards[armIndex][trialIndex] = reward value.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Array.&lt;number>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Simple container for reward histories of the strategies.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="GradientBanditRewards"><span class="type-signature"></span>GradientBanditRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the gradient bandit strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="UpperConfidenceBoundRewards"><span class="type-signature"></span>UpperConfidenceBoundRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the Upper-Confidence-Bound strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="alpha"><span class="type-signature"></span>alpha<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The learning rate (step-size parameter), denoted as α.
+It controls how significantly the preferences are updated after each trial.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="averageReward"><span class="type-signature"></span>averageReward<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The running average of all rewards received so far, denoted as R̄_t.
+This value serves as the baseline in the update rule to judge an action's
+performance relative to the average.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="bernoulliProbabilities"><span class="type-signature"></span>bernoulliProbabilities<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the random success probabilities assigned to each arm in the Bernoulli case.
+Only defined when chosenDistribution === DistributionTyp.BERNOULLI.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenAlgorithms"><span class="type-signature"></span>chosenAlgorithms<span class="type-signature"> :Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span></h4>
+
+
+
+
+<div class="description">
+    List of algorithms selected for this run (e.g., Greedy, epsilon Greedy, Manual, etc.).
+Each algorithm operates on the same reward table but with different selection policies.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenDistribution"><span class="type-signature"></span>chosenDistribution<span class="type-signature"> :<a href="global.html#DistributionTyp">DistributionTyp</a></span></h4>
+
+
+
+
+<div class="description">
+    Currently selected reward distribution type.
+Determines how rewards for each arm are generated.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#DistributionTyp">DistributionTyp</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsSvc"><span class="type-signature"></span>epsSvc<span class="type-signature"> :<a href="EpsilonProvider.html">EpsilonProvider</a></span></h4>
+
+
+
+
+<div class="description">
+    - Shared epsilon provider.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="EpsilonProvider.html">EpsilonProvider</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html">logic/algorithm/strategies/value-based/EpsGreedy.js</a>, <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsilonGreedyRewards"><span class="type-signature"></span>epsilonGreedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the epsilon greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gaussianMeans"><span class="type-signature"></span>gaussianMeans<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the mean (μ) values assigned to each arm in the Gaussian case.
+Only defined when chosenDistribution === DistributionTyp.GAUSSIAN.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="greedyRewards"><span class="type-signature"></span>greedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="manualRewards"><span class="type-signature"></span>manualRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the manual strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="preferences"><span class="type-signature"></span>preferences<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    An array holding the current preference score for each arm, denoted as H_t(a).
+These scores are not probabilities themselves but are used to compute them
+(e.g., via a softmax function).
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableOfRewards"><span class="type-signature"></span>tableOfRewards<span class="type-signature"> :Array.&lt;Array.&lt;number>></span></h4>
+
+
+
+
+<div class="description">
+    2D array of generated rewards for all arms and trials.
+tableOfRewards[armIndex][trialIndex] = reward value.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Array.&lt;number>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(classMap<span class="signature-attributes">opt</span>, strict<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Factory that instantiates algorithm classes based on user selection.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">(classMap<span class="signature-attributes">opt</span>, strict<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a new factory.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>classMap</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, function()></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">Mapping from AlgorithmTyp values to constructor functions/classes.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>strict</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">If true, unknown algorithm types produce a thrown error.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_custom_CustomAlgorithmFactory.js.html">logic/algorithm/strategies/custom/CustomAlgorithmFactory.js</a>, <a href="logic_algorithm_strategies_custom_CustomAlgorithmFactory.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="GradientBanditRewards"><span class="type-signature"></span>GradientBanditRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the gradient bandit strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="UpperConfidenceBoundRewards"><span class="type-signature"></span>UpperConfidenceBoundRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the Upper-Confidence-Bound strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="alpha"><span class="type-signature"></span>alpha<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The learning rate (step-size parameter), denoted as α.
+It controls how significantly the preferences are updated after each trial.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="averageReward"><span class="type-signature"></span>averageReward<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The running average of all rewards received so far, denoted as R̄_t.
+This value serves as the baseline in the update rule to judge an action's
+performance relative to the average.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="bernoulliProbabilities"><span class="type-signature"></span>bernoulliProbabilities<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the random success probabilities assigned to each arm in the Bernoulli case.
+Only defined when chosenDistribution === DistributionTyp.BERNOULLI.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenAlgorithms"><span class="type-signature"></span>chosenAlgorithms<span class="type-signature"> :Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span></h4>
+
+
+
+
+<div class="description">
+    List of algorithms selected for this run (e.g., Greedy, epsilon Greedy, Manual, etc.).
+Each algorithm operates on the same reward table but with different selection policies.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenDistribution"><span class="type-signature"></span>chosenDistribution<span class="type-signature"> :<a href="global.html#DistributionTyp">DistributionTyp</a></span></h4>
+
+
+
+
+<div class="description">
+    Currently selected reward distribution type.
+Determines how rewards for each arm are generated.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#DistributionTyp">DistributionTyp</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsSvc"><span class="type-signature"></span>epsSvc<span class="type-signature"> :<a href="EpsilonProvider.html">EpsilonProvider</a></span></h4>
+
+
+
+
+<div class="description">
+    - Shared epsilon provider.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="EpsilonProvider.html">EpsilonProvider</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html">logic/algorithm/strategies/value-based/EpsGreedy.js</a>, <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsilonGreedyRewards"><span class="type-signature"></span>epsilonGreedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the epsilon greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gaussianMeans"><span class="type-signature"></span>gaussianMeans<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the mean (μ) values assigned to each arm in the Gaussian case.
+Only defined when chosenDistribution === DistributionTyp.GAUSSIAN.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="greedyRewards"><span class="type-signature"></span>greedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="manualRewards"><span class="type-signature"></span>manualRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the manual strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="preferences"><span class="type-signature"></span>preferences<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    An array holding the current preference score for each arm, denoted as H_t(a).
+These scores are not probabilities themselves but are used to compute them
+(e.g., via a softmax function).
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableOfRewards"><span class="type-signature"></span>tableOfRewards<span class="type-signature"> :Array.&lt;Array.&lt;number>></span></h4>
+
+
+
+
+<div class="description">
+    2D array of generated rewards for all arms and trials.
+tableOfRewards[armIndex][trialIndex] = reward value.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Array.&lt;number>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(numberOfArms, numberOfTries, alpha)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">This algorithm adjusts the selection probability for each arm based on its
+performance relative to the average reward.
+
+It works by comparing an arm's reward to the running average. A reward
+that is better than average increases the chosen arm's preference score,
+while a reward that is worse than average decreases it. The scores of all
+other arms are adjusted in the opposite direction.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">(numberOfArms, numberOfTries, alpha)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates an instance of the GradientBandit algorithm.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>numberOfArms</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of arms in the bandit problem.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numberOfTries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The total number of trials to run.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>alpha</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The learning rate (step-size parameter), which controls how much the preferences are updated after each step.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="GradientBanditRewards"><span class="type-signature"></span>GradientBanditRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the gradient bandit strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="UpperConfidenceBoundRewards"><span class="type-signature"></span>UpperConfidenceBoundRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the Upper-Confidence-Bound strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="alpha"><span class="type-signature"></span>alpha<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The learning rate (step-size parameter), denoted as α.
+It controls how significantly the preferences are updated after each trial.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="averageReward"><span class="type-signature"></span>averageReward<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The running average of all rewards received so far, denoted as R̄_t.
+This value serves as the baseline in the update rule to judge an action's
+performance relative to the average.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="bernoulliProbabilities"><span class="type-signature"></span>bernoulliProbabilities<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the random success probabilities assigned to each arm in the Bernoulli case.
+Only defined when chosenDistribution === DistributionTyp.BERNOULLI.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenAlgorithms"><span class="type-signature"></span>chosenAlgorithms<span class="type-signature"> :Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span></h4>
+
+
+
+
+<div class="description">
+    List of algorithms selected for this run (e.g., Greedy, epsilon Greedy, Manual, etc.).
+Each algorithm operates on the same reward table but with different selection policies.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenDistribution"><span class="type-signature"></span>chosenDistribution<span class="type-signature"> :<a href="global.html#DistributionTyp">DistributionTyp</a></span></h4>
+
+
+
+
+<div class="description">
+    Currently selected reward distribution type.
+Determines how rewards for each arm are generated.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#DistributionTyp">DistributionTyp</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsSvc"><span class="type-signature"></span>epsSvc<span class="type-signature"> :<a href="EpsilonProvider.html">EpsilonProvider</a></span></h4>
+
+
+
+
+<div class="description">
+    - Shared epsilon provider.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="EpsilonProvider.html">EpsilonProvider</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html">logic/algorithm/strategies/value-based/EpsGreedy.js</a>, <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsilonGreedyRewards"><span class="type-signature"></span>epsilonGreedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the epsilon greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gaussianMeans"><span class="type-signature"></span>gaussianMeans<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the mean (μ) values assigned to each arm in the Gaussian case.
+Only defined when chosenDistribution === DistributionTyp.GAUSSIAN.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="greedyRewards"><span class="type-signature"></span>greedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="manualRewards"><span class="type-signature"></span>manualRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the manual strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="preferences"><span class="type-signature"></span>preferences<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    An array holding the current preference score for each arm, denoted as H_t(a).
+These scores are not probabilities themselves but are used to compute them
+(e.g., via a softmax function).
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableOfRewards"><span class="type-signature"></span>tableOfRewards<span class="type-signature"> :Array.&lt;Array.&lt;number>></span></h4>
+
+
+
+
+<div class="description">
+    2D array of generated rewards for all arms and trials.
+tableOfRewards[armIndex][trialIndex] = reward value.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Array.&lt;number>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">UCB1 over ValueBasedAlgorithm (Q-values).
+Score(i) = Q[i] + c * sqrt((2 * ln t) / N[i])
+- Pull each arm once (cold-start).
+- Optimistic init works via initial value .</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id=".exports"><span class="type-signature"></span>new exports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_value-based_UCB.js.html">logic/algorithm/strategies/value-based/UCB.js</a>, <a href="logic_algorithm_strategies_value-based_UCB.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="GradientBanditRewards"><span class="type-signature"></span>GradientBanditRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the gradient bandit strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="UpperConfidenceBoundRewards"><span class="type-signature"></span>UpperConfidenceBoundRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the Upper-Confidence-Bound strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="alpha"><span class="type-signature"></span>alpha<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The learning rate (step-size parameter), denoted as α.
+It controls how significantly the preferences are updated after each trial.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="averageReward"><span class="type-signature"></span>averageReward<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The running average of all rewards received so far, denoted as R̄_t.
+This value serves as the baseline in the update rule to judge an action's
+performance relative to the average.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="bernoulliProbabilities"><span class="type-signature"></span>bernoulliProbabilities<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the random success probabilities assigned to each arm in the Bernoulli case.
+Only defined when chosenDistribution === DistributionTyp.BERNOULLI.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenAlgorithms"><span class="type-signature"></span>chosenAlgorithms<span class="type-signature"> :Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span></h4>
+
+
+
+
+<div class="description">
+    List of algorithms selected for this run (e.g., Greedy, epsilon Greedy, Manual, etc.).
+Each algorithm operates on the same reward table but with different selection policies.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="global.html#AlgorithmTyp">AlgorithmTyp</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="chosenDistribution"><span class="type-signature"></span>chosenDistribution<span class="type-signature"> :<a href="global.html#DistributionTyp">DistributionTyp</a></span></h4>
+
+
+
+
+<div class="description">
+    Currently selected reward distribution type.
+Determines how rewards for each arm are generated.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#DistributionTyp">DistributionTyp</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsSvc"><span class="type-signature"></span>epsSvc<span class="type-signature"> :<a href="EpsilonProvider.html">EpsilonProvider</a></span></h4>
+
+
+
+
+<div class="description">
+    - Shared epsilon provider.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="EpsilonProvider.html">EpsilonProvider</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html">logic/algorithm/strategies/value-based/EpsGreedy.js</a>, <a href="logic_algorithm_strategies_value-based_EpsGreedy.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="epsilonGreedyRewards"><span class="type-signature"></span>epsilonGreedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the epsilon greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gaussianMeans"><span class="type-signature"></span>gaussianMeans<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores the mean (μ) values assigned to each arm in the Gaussian case.
+Only defined when chosenDistribution === DistributionTyp.GAUSSIAN.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="greedyRewards"><span class="type-signature"></span>greedyRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the greedy strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="manualRewards"><span class="type-signature"></span>manualRewards<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    Stores cumulative rewards for the manual strategy.
+Each index represents the running total up to that point.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_StrategyRewardHistory.js.html">logic/StrategyRewardHistory.js</a>, <a href="logic_StrategyRewardHistory.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="preferences"><span class="type-signature"></span>preferences<span class="type-signature"> :Array.&lt;number></span></h4>
+
+
+
+
+<div class="description">
+    An array holding the current preference score for each arm, denoted as H_t(a).
+These scores are not probabilities themselves but are used to compute them
+(e.g., via a softmax function).
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;number></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html">logic/algorithm/strategies/gradient-based/GradientBandit.js</a>, <a href="logic_algorithm_strategies_gradient-based_GradientBandit.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tableOfRewards"><span class="type-signature"></span>tableOfRewards<span class="type-signature"> :Array.&lt;Array.&lt;number>></span></h4>
+
+
+
+
+<div class="description">
+    2D array of generated rewards for all arms and trials.
+tableOfRewards[armIndex][trialIndex] = reward value.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Array.&lt;number>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logic_CurrentGame.js.html">logic/CurrentGame.js</a>, <a href="logic_CurrentGame.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ALPHA_DEFAULT">ALPHA_DEFAULT</a></li><li><a href="global.html#AlgorithmTyp">AlgorithmTyp</a></li><li><a href="global.html#DistributionTyp">DistributionTyp</a></li><li><a href="global.html#GAUSSIAN_MEAN_SPREAD_STD_DEV">GAUSSIAN_MEAN_SPREAD_STD_DEV</a></li><li><a href="global.html#GAUSSIAN_STD_DEV">GAUSSIAN_STD_DEV</a></li><li><a href="global.html#MEAN_OF_MEANS">MEAN_OF_MEANS</a></li><li><a href="global.html#UCB_C">UCB_C</a></li><li><a href="global.html#addReward">addReward</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createTable">createTable</a></li><li><a href="global.html#getActionProbabilities">getActionProbabilities</a></li><li><a href="global.html#getPreferences">getPreferences</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#selectArm">selectArm</a></li><li><a href="global.html#setChosenAlgorithms">setChosenAlgorithms</a></li><li><a href="global.html#setChosenDistribution">setChosenDistribution</a></li><li><a href="global.html#setNextArm">setNextArm</a></li><li><a href="global.html#setNumberOfArms">setNumberOfArms</a></li><li><a href="global.html#setNumberOfTries">setNumberOfTries</a></li><li><a href="global.html#supportedTypes">supportedTypes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#useBanditGame">useBanditGame</a></li><li><a href="global.html#withDefaults">withDefaults</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Oct 14 2025 12:51:36 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

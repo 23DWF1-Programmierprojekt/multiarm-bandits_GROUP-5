@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: logic/algorithm/strategies/gradient-based/GradientBandit.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: logic/algorithm/strategies/gradient-based/GradientBandit.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Algorithm from "@/logic/algorithm/Algorithm.js";
+import { ALPHA_DEFAULT } from "@/constants.js";
+
+/**
+ * This algorithm adjusts the selection probability for each arm based on its
+ * performance relative to the average reward.
+ *
+ * It works by comparing an arm's reward to the running average. A reward
+ * that is better than average increases the chosen arm's preference score,
+ * while a reward that is worse than average decreases it. The scores of all
+ * other arms are adjusted in the opposite direction.
+ */
+export default class GradientBandit extends Algorithm {
+    /**
+     * Creates an instance of the GradientBandit algorithm.
+     *
+     * @param {number} numberOfArms - The number of arms in the bandit problem.
+     * @param {number} numberOfTries - The total number of trials to run.
+     * @param {number} alpha - The learning rate (step-size parameter), which controls how much the preferences are updated after each step.
+     */
+    constructor({ numberOfArms, numberOfTries, alpha } = {}) {
+        super({ numberOfArms, numberOfTries });
+
+        // The nullish coalescing operator (??) provides a default value only if 'alpha' is null or undefined.
+        this.alpha = alpha ?? ALPHA_DEFAULT;
+
+        this.preferences = Array(this.numberOfArms).fill(0);
+
+        this.averageReward = 0;
+
+        console.log(`GradientBandit Initialized with ${this.numberOfArms} arms, alpha=${this.alpha}`);
+    }
+
+    /**
+     * The learning rate (step-size parameter), denoted as α.
+     * It controls how significantly the preferences are updated after each trial.
+     * @type {number}
+     */
+    alpha;
+
+    /**
+     * An array holding the current preference score for each arm, denoted as H_t(a).
+     * These scores are not probabilities themselves but are used to compute them
+     * (e.g., via a softmax function).
+     * @type {number[]}
+     */
+    preferences;
+
+    /**
+     * The running average of all rewards received so far, denoted as R̄_t.
+     * This value serves as the baseline in the update rule to judge an action's
+     * performance relative to the average.
+     * @type {number}
+     */
+    averageReward;
+
+    /**
+     * Numerically stable softmax over the preferences array.
+     * @param {number[]} pref - The array of preference scores (also known as logits).
+     * @returns {number[]} An array of probabilities that sum to 1.
+     */
+    #softmax(pref) {
+        const max = Math.max(...pref);
+        const exps = pref.map(p => Math.exp(p - max));
+        const sum = exps.reduce((s, v) => s + v, 0);
+        const probs = exps.map(e => e / sum);
+        console.log(`GrandientBandit: Softmax probabilities: ${probs.map(p => p.toFixed(3)).join(", ")}`);
+        return probs;
+    }
+
+    /**
+     * Select an arm by sampling from the softmax distribution of preferences.
+     * @returns {number} chosen arm index.
+     */
+    selectArm() {
+        const probs = this.#softmax(this.preferences);
+        const r = Math.random();
+        let cum = 0;
+        for (let i = 0; i &lt; probs.length; i++) {
+            cum += probs[i];
+            if (r &lt; cum) {
+                console.log(`GradientBandit: Selected arm: ${i} (random=${r.toFixed(3)})`);
+                return i;
+            }
+        }
+        const lastArm = this.numberOfArms - 1;
+        console.log(`GradientBandit: Edge case - returning last arm ${lastArm}`);
+        return lastArm;
+    }
+
+    /**
+     * Update method called by the environment with the observed reward for the chosen arm.
+     * @param {Object} params - The update information.
+     * @param {number} params.arm - Index of the chosen arm (0-based).
+     * @param {number} params.observedReward - Observed reward value for the chosen arm.
+     */
+    update({ arm, observedReward }) {
+        if (typeof observedReward !== 'number') {
+            throw new Error('GradientBandit: observedReward must be a number');
+        }
+
+        const probs = this.#softmax(this.preferences);
+        const baseline = this.averageReward;
+        const diff = observedReward - baseline;
+
+        console.log(`GradientBandit: Updating preferences for arm ${arm} with reward ${observedReward.toFixed(3)}, baseline=${baseline.toFixed(3)}, diff=${diff.toFixed(3)}`);
+
+        // Update preferences: chosen arm increases, others decrease
+        for (let a = 0; a &lt; this.numberOfArms; a++) {
+            if (a === arm) {
+                this.preferences[a] += this.alpha * diff * (1 - probs[a]);
+            } else {
+                this.preferences[a] -= this.alpha * diff * probs[a];
+            }
+        }
+
+        console.log(`GradientBandit: Updated preferences: ${this.preferences.map(p => p.toFixed(3)).join(", ")}`);
+
+        // Store selection and reward via base class (advances step, increments numberOfPulls)
+        super.update({ arm, observedReward });
+
+        // Update running average reward using the incremented step count step was advanced by super.update(),
+        // so step is now the new number of observed rewards) guard against divide-by-zero should be unnecessary
+        // because super.update() will have advanced step to >= 1
+        this.averageReward += (observedReward - this.averageReward) / this.step;
+        console.log(`GradientBandit: New average reward - ${this.averageReward.toFixed(3)}, step=${this.step}`);
+    }
+
+    /**
+     * Reset algorithm internal state (preferences and baseline) in addition to base reset.
+     */
+    reset() {
+        super.reset();
+        this.preferences.fill(0);
+        this.averageReward = 0;
+        console.log(`GradientBandit: Reset algorithm state`);
+    }
+
+    /**
+     * Get current action probabilities derived from the softmax of preferences.
+     * Mainly used for analysis, visualization, or testing.
+     * @returns {number[]} Current action probabilities (sum to 1).
+     */
+    getActionProbabilities() {
+        const probs = this.#softmax(this.preferences);
+        console.log(`:GradientBandit: getActionProbabilities - ${probs.map(p => p.toFixed(3)).join(", ")}`);
+        return probs;
+    }
+
+    /**
+     * Get a shallow copy of the current preference values.
+     * Useful for unit tests and debugging.
+     * @returns {number[]} Copy of preferences array.
+     */
+    getPreferences() {
+        console.log(`GradientBandit: getPreferences - ${this.preferences.map(p => p.toFixed(3)).join(", ")}`);
+        return [...this.preferences];
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ALPHA_DEFAULT">ALPHA_DEFAULT</a></li><li><a href="global.html#AlgorithmTyp">AlgorithmTyp</a></li><li><a href="global.html#DistributionTyp">DistributionTyp</a></li><li><a href="global.html#GAUSSIAN_MEAN_SPREAD_STD_DEV">GAUSSIAN_MEAN_SPREAD_STD_DEV</a></li><li><a href="global.html#GAUSSIAN_STD_DEV">GAUSSIAN_STD_DEV</a></li><li><a href="global.html#MEAN_OF_MEANS">MEAN_OF_MEANS</a></li><li><a href="global.html#UCB_C">UCB_C</a></li><li><a href="global.html#addReward">addReward</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createTable">createTable</a></li><li><a href="global.html#getActionProbabilities">getActionProbabilities</a></li><li><a href="global.html#getPreferences">getPreferences</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#selectArm">selectArm</a></li><li><a href="global.html#setChosenAlgorithms">setChosenAlgorithms</a></li><li><a href="global.html#setChosenDistribution">setChosenDistribution</a></li><li><a href="global.html#setNextArm">setNextArm</a></li><li><a href="global.html#setNumberOfArms">setNumberOfArms</a></li><li><a href="global.html#setNumberOfTries">setNumberOfTries</a></li><li><a href="global.html#supportedTypes">supportedTypes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#useBanditGame">useBanditGame</a></li><li><a href="global.html#withDefaults">withDefaults</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Oct 14 2025 12:51:36 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

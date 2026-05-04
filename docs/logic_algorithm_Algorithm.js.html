@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: logic/algorithm/Algorithm.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: logic/algorithm/Algorithm.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*Abstract base class for k-armed bandit algorithms.
+ * Purpose: keep a fixed-size history of selected arms per corresponding steps (selectedArms[t] = arm)
+ * and define the contract:
+ *   - selectArm(): choose the next arm using past observations only
+ *   - update(selectedArms[T], t): store the observed number of arm for step t and update t
+ * Concrete algorithms (e.g., Greedy, Epsilon-Greedy, (Manual????) ) extend this class.
+ *
+ * Literature:
+ * Richard S. Sutton, Andrew G. Barto.
+ * Reinforcement Learning: An Introduction (2nd Edition, MIT Press, 2018).
+ * Gangan, S., Soni, M., &amp; Patel, D. (2021).
+ * Survey of multi-armed bandit algorithms applied to recommendation systems.
+ * In International Journal of Computer Applications Technology and Research (IJCATR).
+ */
+
+export default class Algorithm {
+    constructor({ numberOfArms, numberOfTries }) {
+        //parameters:
+        this.numberOfArms = numberOfArms;       // number of arms (k), valid indices: 0..k-1
+        this.numberOfTries = numberOfTries;     // T, total fixed count of steps
+        this.step = 0;                          // current step t (0..T-1)
+        //logging (only common dates for all algorithms):
+        this.selectedArms = Array(numberOfTries).fill(null);    // selectedArms[T] -> selectedArm, which arm was selected at each step t
+        this.numberOfPulls = Array(numberOfArms).fill(0);       // counter - how many times each arm has been pulled
+        this.observedRewards = Array(numberOfTries).fill(0);    // history: observed rewards at each step t
+    }
+
+    /* Abstract method, that returns the index of the next selected arm. */
+    /*    @returns {number} index in [0, numberOfArms) */
+    selectArm()
+    { throw new Error('abstract'); }
+
+    /**
+     * Record the selected arm for the current step and update t (make t=t+1).
+     * Validates arm range, step bounds, and prevents double-writing.
+     * @param {{arm:number}} param - Arm index in [0, numberOfArms).
+     * @throws {Error} If arm is out of range, no tries left, or already recorded.
+     */
+    update({ arm, observedReward }) {
+        if (arm &lt; 0 || arm >= this.numberOfArms) throw new Error('bad arm');
+        if (this.step >= this.numberOfTries)     throw new Error('out of tries');
+        if (this.selectedArms[this.step] !== null) throw new Error('already recorded');
+
+        this.selectedArms[this.step] = arm;
+        this.observedRewards[this.step] = observedReward;
+        this.numberOfPulls[arm] += 1;
+        this.step += 1;
+    }
+
+    /** Reset algorithm state: clear history and step for a new game. */
+    reset() {
+        this.step = 0;
+        this.selectedArms.fill(null);
+        this.observedRewards.fill(null);
+        this.numberOfPulls.fill(0);
+        //if subclass has extra state — override and call super.reset()
+    }
+
+    // === safe getters ===
+    getSelectedArms() {
+        return this.selectedArms.slice();
+    }
+
+    getObservedRewards() {
+        return this.observedRewards.slice();
+    }
+
+    getNumberOfPulls() {
+        return this.numberOfPulls.slice();
+    }
+
+    getStep() {
+        return this.step;
+    }
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ALPHA_DEFAULT">ALPHA_DEFAULT</a></li><li><a href="global.html#AlgorithmTyp">AlgorithmTyp</a></li><li><a href="global.html#DistributionTyp">DistributionTyp</a></li><li><a href="global.html#GAUSSIAN_MEAN_SPREAD_STD_DEV">GAUSSIAN_MEAN_SPREAD_STD_DEV</a></li><li><a href="global.html#GAUSSIAN_STD_DEV">GAUSSIAN_STD_DEV</a></li><li><a href="global.html#MEAN_OF_MEANS">MEAN_OF_MEANS</a></li><li><a href="global.html#UCB_C">UCB_C</a></li><li><a href="global.html#addReward">addReward</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createTable">createTable</a></li><li><a href="global.html#getActionProbabilities">getActionProbabilities</a></li><li><a href="global.html#getPreferences">getPreferences</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#selectArm">selectArm</a></li><li><a href="global.html#setChosenAlgorithms">setChosenAlgorithms</a></li><li><a href="global.html#setChosenDistribution">setChosenDistribution</a></li><li><a href="global.html#setNextArm">setNextArm</a></li><li><a href="global.html#setNumberOfArms">setNumberOfArms</a></li><li><a href="global.html#setNumberOfTries">setNumberOfTries</a></li><li><a href="global.html#supportedTypes">supportedTypes</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#useBanditGame">useBanditGame</a></li><li><a href="global.html#withDefaults">withDefaults</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Oct 14 2025 12:51:36 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
